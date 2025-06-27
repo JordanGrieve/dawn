@@ -1,0 +1,25 @@
+{% assign color_options = product.options_with_values | where: "name", "Color" %}
+{% for option in color_options %}
+  <fieldset class="swatch color-swatch" data-option-index="{{ forloop.index0 }}">
+    <legend class="visually-hidden">{{ option.name }}</legend>
+    <div class="swatch__items">
+      {% for value in option.values %}
+        {% assign downcased_value = value | downcase | handle %}
+        <input
+          type="radio"
+          name="option-{{ forloop.index0 }}"
+          value="{{ value }}"
+          id="swatch-{{ downcased_value }}"
+          class="swatch__input visually-hidden"
+          {% if product.selected_or_first_available_variant.options[forloop.index0] == value %}checked{% endif %}
+        >
+        <label
+          for="swatch-{{ downcased_value }}"
+          class="swatch__label"
+          style="background-color: {{ value | downcase }};"
+        >
+        </label>
+      {% endfor %}
+    </div>
+  </fieldset>
+{% endfor %}
