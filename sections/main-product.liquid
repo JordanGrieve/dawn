@@ -191,6 +191,7 @@
                     {%- endif -%}
                   {%- endif -%}
                 </p>
+
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
@@ -461,6 +462,11 @@
                   render 'share-button', block: block, share_link: share_url
                 %}
 
+
+                //Content
+                //MY code
+                <p>THESHJRTJRTURTG</p>
+                 {% render 'variant-picker', product: product %}
               {%- when 'variant_picker' -%}
               {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
